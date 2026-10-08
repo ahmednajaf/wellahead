@@ -1,0 +1,50 @@
+REFERENCE ANATOMY — HUMAN REFERENCE ATLAS
+
+Source: Human Reference Atlas / HuBMAP Consortium, CCF releases v1.3.
+https://humanatlas.io/
+https://github.com/hubmapconsortium/ccf-releases/tree/main/v1.3/models
+
+Reference atlas data are available under Creative Commons Attribution 4.0
+International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
+Release and licensing description: https://pmc.ncbi.nlm.nih.gov/articles/PMC11703146/
+
+Credit: Human Reference Atlas collaborators and original anatomical model
+contributors. Visible Human (VH) reference organ work includes Kristen Browne
+and the atlas anatomical modelling team; Allen brain data originate from the
+Allen Institute; SBU large-intestine work originates from Stony Brook University.
+Please consult the linked release and paper for full contributor credits.
+
+SOURCE FILES
+Heart: VH_F_Heart.glb, with matching VH_F_Blood_Vasculature.glb structures
+Brain: Allen_M_Brain.glb
+Lungs: VH_M_Lung.glb
+Large intestine: SBU_M_Intestine_Large.glb
+Kidney: VH_M_Kidney_L.glb
+Liver: VH_M_Liver.glb
+Pancreas: VH_M_Pancreas.glb
+Knee: VH_M_Knee_L.glb
+Uterus: VH_F_Uterus.glb
+Eye: VH_M_Eye_L.glb
+Legacy skin reference (retained, not the whole-body tile): VH_M_Skin.glb
+
+MODIFICATIONS FOR THIS DEMO
+Selected external structures; omitted some nested/internal surfaces; added
+matching reference vessels around the heart; centred and uniformly scaled;
+vertex clustering for smaller meshes; applied illustrative surface colours.
+Rendered with perspective, lighting and interactive rotation. Colours are
+illustrative. Dimensions are not patient measurements. Some vessel ends are
+cropped. These are reference models, not individual scans or diagnostic tools.
+
+Navigation icons: original AI-generated decorative artwork for Well Ahead.
+Icon imagery is not a medical diagram or source of medical guidance.
+
+PERSONALISED WHOLE-BODY AVATAR — separate from the reference atlas licence
+User-supplied source: ahmed-metaperson-192cm.blend.
+colleague.glb preserves the supplied avatar geometry and packed textures;
+The software viewer reads the same colleague.glb and maps its original packed
+textures using UV coordinates and a depth buffer, without needing WebGL.
+colleague.mesh is a legacy colour-sampled export, no longer used for whole body.
+Studio floor, lights and camera omitted. Source Blender file is unchanged.
+This personal likeness is not covered by the atlas CC BY licence above.
+Confirm the subject's consent and source asset licence before redistribution.
+This is a visual avatar, not a clinical scan, diagnosis or risk assessment.

@@ -1,0 +1,61 @@
+import { test, expect } from '@playwright/test';
+const action={id:'move',title:'Move more',idea:'Go for a walk.',reason:'Your goal.',systems:['muscles'],context:'',step:'',uncertainty:'',sources:[]};
+const check={id:'review',title:'Health review',status:'recommended',authority:'NHS',explanation:'Discuss your plan.',trigger:'Existing plan',sourceUrl:'https://www.nhs.uk/'};
+const plan={route:'prevention',profile:{answers:['31','','','','',''],records:[],facts:[]},intro:'Your plan',actions:[action],followUp:'',uncertainty:'',recommendations:{primary:null,nice:[],nhs:[check],optional:[],uncertainties:[]}};
+
+test('glass summaries update on completion and successful appointment saves, not reminders or failed saves',async({page},info)=>{
+ await page.route('**/api/plan',r=>r.fulfill({json:plan}));
+ await page.route('**/api/calendar/status',r=>r.fulfill({json:{configured:true,connected:true,email:'test@example.invalid',csrf:'test'}}));
+ let fail=false;
+ await page.route('**/api/calendar/events',r=>{if(fail)return r.fulfill({status:500,json:{error:'Could not save.'}});const data=r.request().postDataJSON();expect(Object.keys(data).sort()).toEqual(['confirmed','duration','kind','requestId','start','timeZone','title']);return r.fulfill({json:{title:data.title,start:{dateTime:data.start},email:'test@example.invalid',htmlLink:'https://calendar.google.com/calendar/event?eid=test'}});});
+ await page.setViewportSize({width:1440,height:1000});await page.goto('/');await page.getByRole('textbox',{name:'Tell us about your health'}).fill('I am 31.');await page.getByRole('button',{name:'Review my health profile'}).click();await page.getByRole('button',{name:'Looks right'}).click();
+ const score=(n:number)=>page.getByRole('group',{name:`Health optimisation score: ${n}%`});
+ await expect(score(0)).toBeVisible();await expect(page.getByRole('button',{name:'Upcoming health to-dos: 2'})).toBeVisible();
+ await page.screenshot({path:info.outputPath('dashboard-glass.png'),fullPage:true});
+ const add=async()=>{await page.getByRole('button',{name:'Book time for Health review in Google Calendar'}).click();await expect(page.getByText('test@example.invalid',{exact:true})).toBeVisible();};
+ await add();await page.getByRole('combobox',{name:'This is',exact:true}).selectOption('reminder');await page.getByRole('button',{name:'Confirm & add to Google Calendar'}).click();await expect(page.getByRole('dialog',{name:'Added to Google Calendar'})).toBeVisible();await page.getByRole('button',{name:'Close calendar'}).click();await expect(score(0)).toBeVisible();
+ fail=true;await add();await page.getByRole('combobox',{name:'This is',exact:true}).selectOption('appointment');await page.getByRole('button',{name:'Confirm & add to Google Calendar'}).click();await expect(page.getByRole('alert')).toHaveText('Could not save.');await page.getByRole('button',{name:'Close calendar'}).click();await expect(score(0)).toBeVisible();
+ fail=false;await add();await page.getByRole('combobox',{name:'This is',exact:true}).selectOption('appointment');await page.getByRole('button',{name:'Confirm & add to Google Calendar'}).click();await expect(page.getByRole('dialog')).not.toBeVisible();await expect(score(50)).toBeVisible();
+ await page.getByRole('button',{name:'Upcoming health to-dos: 2'}).click();await page.getByRole('combobox',{name:'Status for Move more'}).selectOption('completed');await page.getByRole('button',{name:'Close plan progress'}).click();await expect(score(100)).toBeVisible();await expect(page.getByRole('button',{name:'Upcoming health to-dos: 1'})).toBeVisible();
+ await page.getByRole('button',{name:'Upcoming health to-dos: 1'}).click();await expect(page.getByRole('combobox',{name:'Status for Health review'})).toHaveValue('booked');await expect(page.getByRole('combobox',{name:'Status for Move more'})).toHaveCount(0);await page.keyboard.press('Escape');await expect(page.getByRole('button',{name:'Upcoming health to-dos: 1'})).toBeFocused();
+ await page.setViewportSize({width:390,height:844});await page.screenshot({path:info.outputPath('dashboard-glass-mobile.png'),fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.getByRole('button',{name:'How are you feeling today?'}).click();await page.getByRole('textbox',{name:'Your health check-in'}).fill('I enjoy walking.');await page.getByRole('button',{name:'Send health check-in'}).click();await page.getByRole('button',{name:'Looks right'}).click();await expect(score(0)).toBeVisible();
+});
+
+test('Calendar confirmation moves a next step into booked appointments without duplication',async({page},info)=>{
+ const steps=['one','two','three','four'].map(id=>({...check,id,title:`Test ${id}`,authority:'Bupa',sourceUrl:'https://www.bupa.co.uk/'}));
+ await page.route('**/api/plan',r=>r.fulfill({json:{...plan,actions:[],recommendations:{...plan.recommendations,primary:steps[0],optional:steps.slice(1),nhs:[]}}}));
+ await page.route('**/api/calendar/status',r=>r.fulfill({json:{configured:true,connected:true,email:'test@example.invalid',csrf:'test'}}));
+ let writes=0,fail=true;let savedStart='';
+ await page.route('**/api/calendar/events',r=>{
+  writes++;const data=r.request().postDataJSON();expect(data.kind).toBe('appointment');expect(data.confirmed).toBe(true);
+  expect(Object.keys(data).sort()).toEqual(['confirmed','duration','kind','requestId','start','timeZone','title']);
+  savedStart=data.start;
+  return fail?r.fulfill({status:503,json:{error:'Could not save.'}}):r.fulfill({json:{title:data.title,start:{dateTime:data.start},email:'test@example.invalid',htmlLink:'https://calendar.google.com/calendar/event?eid=test'}});
+ });
+ await page.goto('/');await page.getByRole('textbox',{name:'Tell us about your health'}).fill('I am 31.');await page.getByRole('button',{name:'Review my health profile'}).click();await page.getByRole('button',{name:'Looks right'}).click();
+ const next=page.getByRole('list',{name:'Recommended Bupa and NHS tests'});
+ await expect(next.getByRole('listitem')).toHaveCount(4);
+ await page.getByRole('button',{name:'View details for Test two'}).click();
+ const detail=page.locator('details[data-recommendation-id="two"]');
+ await expect(detail).toHaveAttribute('open','');await expect(detail.locator('summary')).toBeFocused();
+ await expect(detail.getByText('Discuss your plan.',{exact:true})).toBeVisible();expect(writes).toBe(0);
+ await page.getByRole('button',{name:'Home',exact:true}).click();
+ const book=()=>page.getByRole('button',{name:'Book time for Test two in Google Calendar'}).click();
+ await book();await expect(page.getByRole('combobox',{name:'This is',exact:true})).toHaveValue('appointment');expect(writes).toBe(0);
+ await page.getByRole('button',{name:'Close calendar'}).click();await expect(page.getByRole('group',{name:'Health optimisation score: 0%'})).toBeVisible();
+ await book();await page.getByRole('button',{name:'Confirm & add to Google Calendar'}).click();await expect(page.getByRole('alert')).toHaveText('Could not save.');
+ await expect(page.getByRole('group',{name:'Health optimisation score: 0%'})).toBeVisible();
+ fail=false;await page.getByRole('button',{name:'Confirm & add to Google Calendar'}).click();
+ await expect(page.getByRole('dialog')).not.toBeVisible();await expect(page.getByRole('tab')).toHaveCount(0);
+ const booked=page.getByRole('list',{name:'Booked appointments'}).getByRole('listitem');
+ await expect(booked).toHaveCount(1);await expect(booked).toContainText('Discuss Test two');await expect(booked).toBeFocused();
+ await expect(booked.locator('time')).toHaveAttribute('datetime',savedStart);
+ await expect(booked.getByRole('link',{name:'View in Google Calendar'})).toHaveAttribute('href','https://calendar.google.com/calendar/event?eid=test');
+ await expect(page.getByRole('group',{name:'Health optimisation score: 25%'})).toBeVisible();
+ await expect(next.getByRole('listitem')).toHaveCount(3);await expect(next).not.toContainText('Test two');expect(writes).toBe(2);
+ await page.screenshot({path:info.outputPath('calendar-booked.png'),fullPage:true});
+ await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.screenshot({path:info.outputPath('calendar-booked-mobile.png'),fullPage:true});
+ await page.getByRole('button',{name:'Mark Discuss Test two completed'}).click();await expect(page.getByRole('list',{name:'Booked appointments'})).toHaveCount(0);await expect(page.getByRole('group',{name:'Health optimisation score: 25%'})).toBeVisible();
+});

@@ -1,0 +1,56 @@
+.mesh-canvas { position: relative; }
+.mesh-canvas > canvas { position: absolute; inset: 0; }
+.mesh-canvas [hidden] { display: none; }
+.avatar-renderer { position: absolute; inset: 0; }
+.avatar-renderer canvas { width: 100%; height: 100%; display: block; }
+.anatomy-controls { flex-wrap: wrap; }
+.upstream-appointments .appointment-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid #ffffff26; }
+.upstream-appointments .appointment-row > div { flex: 1; min-width: 0; }
+.upstream-appointments h3 { font-size: 12px; line-height: 1.5; margin: 0; }
+.upstream-appointments p { font-size: 11px; opacity: .8; }
+.upstream-appointments .appointment-add { background: #ffffff24; border: 1px solid #ffffff4d; width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; font-size: 21px; color: white; }
+.upstream-appointments .appointment-add:hover { background: #ffffff40; }
+.upstream-appointments summary { cursor: pointer; font-size: 12px; padding-top: 8px; }
+.upstream-calendar-dialog { width: min(540px, calc(100vw - 32px)); max-height: calc(100svh - 36px); margin: auto; padding: 26px; border: 1px solid #ffffffbd; border-radius: 28px; color: #373142; background: #f6f3fbea; backdrop-filter: blur(24px); box-shadow: 0 30px 90px #31234040; }
+.upstream-calendar-dialog::backdrop { background: #30283c66; backdrop-filter: blur(9px); }
+.upstream-calendar-dialog > header { display: flex; align-items: start; gap: 15px; margin-bottom: 20px; }
+.upstream-calendar-dialog h2 { flex: 1; font-size: 23px; letter-spacing: -.6px; }
+.upstream-calendar-dialog p { font-size: 13px; line-height: 1.65; margin: 14px 0; }
+.upstream-calendar-dialog .dialog-small { font-size: 11px; color: #6b6178; }
+.upstream-calendar-dialog .calendar-label { display: block; font-size: 12px; margin: 15px 0; }
+.upstream-calendar-dialog input, .upstream-calendar-dialog select { display: block; width: 100%; border: 1px solid #cec5d9; border-radius: 11px; padding: 11px; background: #fff; color: #373142; margin-top: 6px; font-size: 13px; }
+.upstream-calendar-dialog .calendar-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 12px; }
+.upstream-calendar-dialog .calendar-account { padding: 16px; border-radius: 15px; background: #e9e2f0; margin: 15px 0; }
+.upstream-calendar-dialog small { display: block; font-size: 11px; margin-top: 8px; line-height: 1.7; overflow-wrap: anywhere; }
+.upstream-calendar-dialog .calendar-account .text-button { display: block; margin-top: 12px; font-size: 11px; }
+.upstream-calendar-dialog .calendar-account strong { overflow-wrap: anywhere; font-size: 13px; }
+.upstream-calendar-dialog .calendar-success { font-size: 32px; }
+.upstream-calendar-dialog .calendar-notice { color: #803b4b; }
+.upstream-calendar-dialog .primary-button { font-size: 12px; }
+@media(max-width:540px) { .upstream-calendar-dialog { padding: 21px; } .upstream-calendar-dialog h2 { font-size: 21px; } }
+
+.onboarding-connectors { display: grid; grid-template-columns: minmax(0,1fr); gap: 10px; margin: 22px 0 0; text-align: left; }
+.onboarding-connectors .connection-pill { cursor: pointer; padding: 12px; flex-wrap: wrap; gap: 6px; font-size: 11px; }
+.onboarding-connectors .connection-pill > svg { flex-shrink: 0; }
+.onboarding-connectors .connection-state { font-size: 10px; }
+.app-dock .apple-health-connector { color: #be456d; cursor: default; }
+.app-dock .apple-health-logo { width: 30px; height: 30px; object-fit: contain; border-radius: 7px; }
+.example-banner { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; margin: 8px 0 24px; padding: 12px 16px; background: #ffffff70; border-radius: 12px; }
+@media(max-width:540px) { .onboarding-connectors { grid-template-columns: 1fr; gap: 8px; } .onboarding-connectors .connection-pill { min-height: 43px; flex-wrap: nowrap; } }
+
+/* Compact, keyboard-accessible demo switch in the onboarding header. */
+.combined-onboarding .onboard-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.demo-profile-switch { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; min-height: 40px; padding: 10px 14px; border: 1px solid #ffffff8c; border-radius: 20px; background: #ffffff35; box-shadow: inset 0 1px 0 #ffffff8c; color: #514858; cursor: pointer; }
+.demo-profile-switch > span { font-size: 10px; font-weight: 600; letter-spacing: .04em; }
+.demo-profile-switch > strong { font-size: 11px; font-weight: 550; color: #392f46; }
+.demo-profile-switch:hover, .demo-profile-switch[aria-pressed=true] { background: #ffffff80; border-color: #ffffffcc; }
+.demo-profile-switch:focus-visible { outline: 2px solid #65507f; outline-offset: 3px; }
+.demo-profile-switch:disabled { opacity: .5; cursor: default; }
+@media(max-width:540px) { .combined-onboarding .onboard-header .brand { font-size: 15px; } .demo-profile-switch { gap: 6px; padding: 9px 12px; } }
+.onboard-content .example-banner { margin: 14px 0 0; text-align: left; font-size: 11px; }
+.onboard-content .example-banner .text-button { flex-shrink: 0; font-size: 11px; }
+.example-record-note { text-align: left; font-size: 11px; line-height: 1.6; margin: 12px 0; color: #554d60; }
+.onboarding-record { margin: 10px 0 0; padding: 13px 15px; border: 1px solid #ffffff8c; border-radius: 14px; background: #ffffff33; text-align: left; font-size: 12px; }
+.onboarding-record summary { cursor: pointer; font-weight: 500; }
+.onboarding-record small { display: block; color: #645a70; margin-top: 12px; }
+.onboarding-record p { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; line-height: 1.7; margin: 10px 0; }

@@ -1,0 +1,40 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+# Dependencies, caches and generated builds
+node_modules/
+frontend/build/
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+*.log
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+# Recordings, screenshots, archives and 3D authoring sources
+presentation-videos/
+screenshots/
+*.mp4
+*.webm
+*.mov
+*.wav
+*.blend
+*.blend[0-9]*
+*.fbx
+*.obj
+*.mtl
+*.stl
+*.psd
+*.psb
+*.xcf
+*.zip
+*.7z
+*.tar.gz
+# Exported .glb and .mesh runtime assets are intentionally versioned.

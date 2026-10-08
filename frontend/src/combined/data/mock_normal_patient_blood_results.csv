@@ -1,0 +1,78 @@
+﻿Patient,Age,Sex,Demo patient,Category,Biomarker,Mock result,Units,Notes
+Emma Thompson,35,Female,True,Blood & nutrition,WBC,6.1,K/µL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,RBC,4.45,M/µL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Haemoglobin,13.4,g/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Haematocrit,41.0,%,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,MCV,92,fL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,MCH,30.1,pg,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,MCHC,32.7,g/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,RDW,13.0,%,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Platelets,245,K/µL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,MPV,9.8,fL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Reticulocytes,1.2,%,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Iron,92,µg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,TIBC,310,µg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Ferritin,72,ng/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Iron saturation,30,%,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Vitamin B12,620,pg/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Folate,16.0,ng/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Vitamin D,42,ng/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,"Magnesium, RBC",5.1,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Blood & nutrition,Zinc,91,µg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Immune,Neutrophils,58,%,Synthetic demo result
+Emma Thompson,35,Female,True,Immune,Lymphocytes,31,%,Synthetic demo result
+Emma Thompson,35,Female,True,Immune,Monocytes,7,%,Synthetic demo result
+Emma Thompson,35,Female,True,Immune,Eosinophils,3,%,Synthetic demo result
+Emma Thompson,35,Female,True,Immune,Basophils,1,%,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,Total cholesterol,168,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,LDL-C,82,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,HDL-C,70,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,Triglycerides,62,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,Chol/HDL ratio,2.4,ratio,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,ApoB,72,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,ApoA1,175,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,Lipoprotein(a),14,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,hs-CRP,0.4,mg/L,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,Homocysteine,7.5,µmol/L,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,CoQ10,1.1,µg/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,OmegaCheck EPA+DPA+DHA,6.2,% by wt,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,EPA,0.8,% by wt,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,DPA,1.1,% by wt,Synthetic demo result
+Emma Thompson,35,Female,True,Heart,DHA,4.3,% by wt,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,Fasting glucose,86,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,HbA1c,5.2,%,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,Fasting insulin,5.5,µIU/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,TSH,1.8,µIU/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,Free T4,1.25,ng/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,Free T3,3.1,pg/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,Reverse T3,17,ng/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,TPO antibodies,8,IU/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,Thyroglobulin antibodies,12,IU/mL,Synthetic demo result
+Emma Thompson,35,Female,True,Hormones,"Cortisol, morning",13.5,µg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Sexual health,FSH,6.8,mIU/mL,"Synthetic demo, early follicular phase"
+Emma Thompson,35,Female,True,Sexual health,LH,7.2,mIU/mL,"Synthetic demo, early follicular phase"
+Emma Thompson,35,Female,True,Sexual health,Oestradiol,85,pg/mL,"Synthetic demo, early follicular phase"
+Emma Thompson,35,Female,True,Sexual health,Progesterone,0.8,ng/mL,"Synthetic demo, early follicular phase"
+Emma Thompson,35,Female,True,Sexual health,DHEA-S,190,µg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Sexual health,Total testosterone,27,ng/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Sexual health,Free testosterone,0.35,ng/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Sexual health,SHBG,72,nmol/L,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,Creatinine,0.75,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,eGFR,105,mL/min,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,BUN,14,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,Sodium,140,mmol/L,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,Potassium,4.2,mmol/L,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,Chloride,102,mmol/L,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,CO₂,25,mmol/L,Synthetic demo result
+Emma Thompson,35,Female,True,Kidneys & urinary,Uric acid,4.1,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Liver,ALT,16,U/L,Synthetic demo result
+Emma Thompson,35,Female,True,Liver,AST,19,U/L,Synthetic demo result
+Emma Thompson,35,Female,True,Liver,ALP,58,U/L,Synthetic demo result
+Emma Thompson,35,Female,True,Liver,Bilirubin,0.6,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Liver,Albumin,4.5,g/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Liver,Total protein,7.0,g/dL,Synthetic demo result
+Emma Thompson,35,Female,True,"Muscles, bones & joints",Calcium,9.4,mg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,"Muscles, bones & joints",CK,95,U/L,Synthetic demo result
+Emma Thompson,35,Female,True,Whole person,Lead,<1.0,µg/dL,Synthetic demo result
+Emma Thompson,35,Female,True,Whole person,Arsenic,3,µg/L,Synthetic demo result
+Emma Thompson,35,Female,True,Whole person,Mercury,2.0,µg/L,Synthetic demo result

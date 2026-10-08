@@ -1,0 +1,30 @@
+@import "tailwindcss";
+:root {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #263342;
+  background: #f7f8fa;
+  font-synthesis: none;
+  --accent: #285dd9;
+  --ink: #263342;
+  --muted: #637083;
+  --surface: #fff;
+  --line: #e5e8ee;
+  --radius: 24px;
+  --shadow: 0 16px 50px -26px #23365740;
+  --space: 8px;
+}
+
+:root {
+  /* One atmospheric canvas shared by onboarding, confirmation and the home screen. */
+  --ambient-background:
+    linear-gradient(140deg, #ffffff75, #ffffff20),
+    radial-gradient(125% 125% at 50% 101%, #f55702 10.5%, #f57802 16%, #f58c02 17.5%, #f5aa64 25%, #eeaeca 40%, #cab3d6 65%, #94c9e9 100%);
+  --glass-surface: #ffffff30;
+  --glass-border: #ffffff70;
+  --glass-shadow: 0 10px 40px -24px #47395240, inset 0 1px 0 #ffffff75;
+}
